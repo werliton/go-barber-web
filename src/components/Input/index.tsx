@@ -1,7 +1,8 @@
 import React, { InputHTMLAttributes } from 'react';
+import { FiAlertCircle } from 'react-icons/fi';
 import { IconBaseProps } from 'react-icons/lib';
 import InputService from './service';
-import { Container } from './styles';
+import { Container, Error } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
     name: string;
@@ -13,7 +14,7 @@ const Input: React.FC<InputProps> = ({ icon: Icon, ...rest }) => {
     handleInputBlur, handleInputFocus, isFocus, isFilled, defaultValue, inputRef, error,
   } = InputService(rest.name);
   return (
-    <Container isFocus={isFocus} isFilled={isFilled}>
+    <Container isFocus={isFocus} isFilled={isFilled} isError={!!error}>
       { Icon && <Icon /> }
       <input
         defaultValue={defaultValue}
@@ -22,7 +23,14 @@ const Input: React.FC<InputProps> = ({ icon: Icon, ...rest }) => {
         onBlur={handleInputBlur}
         onFocus={handleInputFocus}
       />
-      { error }
+      <span>
+        { error
+        && (
+        <Error>
+          <FiAlertCircle color="#c53030" size={20} />
+        </Error>
+        )}
+      </span>
     </Container>
   );
 };

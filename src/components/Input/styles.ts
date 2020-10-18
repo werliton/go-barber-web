@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components';
 
 interface ContainerProps {
     isFocus: boolean;
-    isFilled: boolean
+    isFilled: boolean;
+    isError: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -19,6 +20,11 @@ export const Container = styled.div<ContainerProps>`
         margin-top: 10px;
     }
 
+    ${({ isError }) => isError && css`
+        color:#c53030;
+        border-color: #c53030;
+    `}
+
     ${({ isFocus }) => isFocus && css`
         color:#FF9000;
         border-color: #FF9000;
@@ -26,6 +32,8 @@ export const Container = styled.div<ContainerProps>`
     ${({ isFilled }) => isFilled && css`
         color:#FF9000;
     `}
+
+
     input {
         color: #f4ede8;
         background: transparent;
@@ -39,5 +47,18 @@ export const Container = styled.div<ContainerProps>`
 
     svg {
         margin-right: 16px;
+    }
+
+    span {
+        font-size:12px;
+        color: #fff;
+    }
+`;
+
+export const Error = styled.div`
+    height: 20px;
+    margin-left: 16px;
+    svg {
+        margin-right:0px;
     }
 `;
