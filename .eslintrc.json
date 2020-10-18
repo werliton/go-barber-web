@@ -27,6 +27,7 @@
     ],
     "rules": {
         "no-use-before-define": "off",
+        "no-unused-expressions": "off",
         "react/jsx-props-no-spreading": "off",
         "react-hooks/rules-of-hooks": "error",
         "react/prop-types": "off",
