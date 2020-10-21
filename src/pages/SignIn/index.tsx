@@ -38,7 +38,7 @@ const SignIn: React.FC = () => {
     } catch (error) {
       formRef.current?.setErrors(getValidationErrors(error));
     }
-    }, [],
+    }, [signIn],
   );
 
   return (
