@@ -6,7 +6,10 @@ import {
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { FormHandles } from '@unform/core';
-import { Background, Container, Content } from './styles';
+import { Link } from 'react-router-dom';
+import {
+  AnimatedContent, Background, Container, Content,
+} from './styles';
 
 import logo from '../../assets/logo.svg';
 import Input from '../../components/Input';
@@ -38,24 +41,26 @@ const SignUp: React.FC = () => {
     <Container>
       <Background />
       <Content>
-        <img src={logo} alt="Go Barber" />
-        <Form onSubmit={handleSubmit} ref={formRef}>
-          <h1>Faça seu cadastro</h1>
+        <AnimatedContent>
+          <img src={logo} alt="Go Barber" />
+          <Form onSubmit={handleSubmit} ref={formRef}>
+            <h1>Faça seu cadastro</h1>
 
-          <Input placeholder="E-mail" name="email" icon={FiMail} />
-          <Input placeholder="Nome" name="name" icon={FiUser} />
-          <Input placeholder="Senha" name="password" icon={FiLock} type="password" />
+            <Input placeholder="E-mail" name="email" icon={FiMail} />
+            <Input placeholder="Nome" name="name" icon={FiUser} />
+            <Input placeholder="Senha" name="password" icon={FiLock} type="password" />
 
-          <Button type="submit">
-            Cadastrar
-          </Button>
+            <Button type="submit">
+              Cadastrar
+            </Button>
 
-        </Form>
+          </Form>
 
-        <a href="register">
-          <FiArrowLeft size={20} />
-          Voltar para login
-        </a>
+          <Link to="/">
+            <FiArrowLeft size={20} />
+            Voltar para login
+          </Link>
+        </AnimatedContent>
       </Content>
     </Container>
   );
